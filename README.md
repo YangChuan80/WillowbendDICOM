@@ -56,11 +56,13 @@ SOFTWARE..
 
 ## Contributor List
 - [@wenzhexue](http://github.com/wenzhexue) (Dr. **Wenzhe Xue**, Mayo Clinic) 
-<br>
 
-<br>
-<br>
-<br>
+## Contact
+**Chuan Yang**, MD
+<br>Department of Cardiology
+<br>Shengjing Hospital of China Medical University
+<br>36 Sanhao Street, Heping District, Shenyang, Liaoning 110004
+<br>People's Republic of China</br>
 
 _________________________________________
 

@@ -29,7 +29,7 @@ There are several dependencies necessarily preinstalled in your Python interpret
 ## Instructions
 - Click **Browse** button to choose the DICOM file. 
 - Load this chosen file. Don't forget to press **Load** button. When file successfully loaded, a information dialog will pop up to notice you. 
-- Click **Convert** button to convert DICOM to AVI file. During this session, you should specify the location you're going to output to. Next you are required to select the VIDEO COMPRESSION options, which the **"Full Frames (Uncompressed)"** is recommended. Click **OK**. You'll wait for about a second, and your AVI file is ready! Congratulations!
+- Click **Convert** button on the right to convert the currently loaded DICOM file to AVI file. During this session, you will be asked to specify the location you're going to output to. Next you are required to select the VIDEO COMPRESSION options, which the **"Full Frames (Uncompressed)"** is recommended. Click **OK**. You'll wait for about a second, and your AVI file is ready! Congratulations!
 
 ## License
 The MIT License (MIT)

@@ -26,6 +26,11 @@ There are several dependencies necessarily preinstalled in your Python interpret
 - **OpenCV**
  - Download the wheel file from [https://scivision.co/install-opencv-3-0-x-for-python-on-windows/](https://scivision.co/install-opencv-3-0-x-for-python-on-windows/)
 
+After you complete the WillowbendDICOM.py file download, run it:
+```
+python WillowbendDICOM.py
+```
+Python interpreter have to be Python 3.4 or later.
 ## Instructions
 - Click **Browse** button to choose the DICOM file. 
 - Load this chosen file. Don't forget to press **Load** button. When file successfully loaded, a information dialog will pop up to notice you. 

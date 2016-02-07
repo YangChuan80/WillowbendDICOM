@@ -9,7 +9,7 @@ A dialog-based DICOM to video converter.
 **Willowbend DICOM** is a dialog-based application performing the conversion from DICOM format to video format (avi) in order to meet the needs and requirements for universal computer systems (PC, Mac, Linux, etc.). So the ordinary users of such systems can use the converted file to present, communicate and store the universal files. Case reports by physicians, radiologist and medical technicians can use it in medical conferences, educations of clinical medicine, and they will feel free to use universal video formats in the slide presentations.
 
 ## Installation from Binaries
-- Download **[WillowbendDICOM_Instllation.exe](https://github.com/YangChuan80/p_WillowbendDICOM/blob/master/WillowbendDICOM_Installation.exe?raw=true)** file, which is a NSIS installation file only used in Windows platform. 
+- Download **[WillowbendDICOM_Installer.exe](https://github.com/YangChuan80/p_WillowbendDICOM/blob/master/WillowbendDICOM_Installer.exe?raw=true)** file, which is a NSIS installation file only used in Windows platform. 
 - After downloading, you can install it directly. When finished, a folder with the same name have been made. Enter the folder WillowbendDICOM, run the **WillowbendDICOM.EXE** to go!
 
 ## Installation from Source

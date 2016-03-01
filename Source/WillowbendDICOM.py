@@ -1,5 +1,14 @@
 # Willowbend DICOM
+# <img src="Title.png" align="left" width="45%" height="45%">
+
+# A dialog-based DICOM to video converter.
+
+# **DICOM (Digital Imaging and Communications in Medicine)** is a standard for handling, storing, printing, and transmitting information in medical imaging. DICOM files can be exchanged between two entities that are capable of receiving image and patient data in DICOM format by following network communications protocol. DICOM has been widely adopted by hospitals and is making inroads in smaller applications like dentists' and doctors' offices.
+
+# This project is to implement the process of conversion from DICOM format to video format (avi) in order to meet the needs and requirements for universal computer systems (PC, Mac, Linux, etc.). So the ordinary users of such systems can use the converted file to present, communicate and store the universal files. Case reports in medical conferences, educations of clinical medicine will become more convenient to use universal video formats in the slide presentations.
+
 ## Libraries
+
 import SimpleITK as sitk
 import cv2
 import pydicom
@@ -10,7 +19,9 @@ from tkinter import messagebox
 from tkinter import filedialog
 
 ## Helper Functions
+
 ### Basic Helper Functions
+
 def loadFile(filename):
     ds = sitk.ReadImage(filename)
     img_array = sitk.GetArrayFromImage(ds)
@@ -140,7 +151,42 @@ def convertVideoButton():
         isLoad = 0
 
 def about():
-    messagebox.showinfo("About", "Author: Chuan Yang, Febuary 3rd, 2016, Houston")
+    about_root=tk.Tk()
+    
+    w = 367 # width for the Tk root
+    h = 230 # height for the Tk root
+
+    # get screen width and height
+    ws = about_root.winfo_screenwidth() # width of the screen
+    hs = about_root.winfo_screenheight() # height of the screen
+
+    # calculate x and y coordinates for the Tk root window
+    x = (ws/2) - (w/2)
+    y = (hs/2) - (h/2)
+
+    # set the dimensions of the screen 
+    # and where it is placed
+    about_root.geometry('%dx%d+%d+%d' % (w, h, x, y))
+    about_root.title('About Willowbend DICOM')  
+    about_root.iconbitmap('Heart.ico')
+
+    label_author=tk.Label(about_root,text='Willowbend DICOM Version 1.0', font=('tahoma', 9))
+    label_author.place(x=90,y=30)
+
+    label_author=tk.Label(about_root,text='Copyright (C) 2016', font=('tahoma', 9))
+    label_author.place(x=125,y=60)
+    
+    label_author=tk.Label(about_root,text='Author: Chuan Yang', font=('tahoma', 9))
+    label_author.place(x=125,y=90)
+    
+    label_author=tk.Label(about_root,text='Shengjing Hospital of China Medical University', font=('tahoma', 9))
+    label_author.place(x=50,y=120)
+   
+
+    button_refresh=ttk.Button(about_root, width=15, text='OK', command=about_root.destroy)
+    button_refresh.place(x=135, y=170)
+
+    about_root.mainloop()
 
 ## Main Stream
 
@@ -246,7 +292,7 @@ text_clipLimit.delete('1.0', tk.END)
 text_clipLimit.insert('1.0', clipLimit)
 
 #/////////////Button///////////////////////////////////////////////////////////////
-button_browse=ttk.Button(root, text='browse...', width=20, command=browseFileButton)
+button_browse=ttk.Button(root, text='Browse...', width=20, command=browseFileButton)
 button_browse.place(x=60, y=510)
 
 button_load=ttk.Button(root, text='Load', width=20, command=loadFileButton)
@@ -264,3 +310,13 @@ button_close.place(x=700, y=580)
 cv2.destroyAllWindows()
 
 root.mainloop()
+
+### !!! Make sure to downgrade setuptools to 19.2. If this does get the frozen binary with PyInstaller !!!!
+# Just hit this myself. Can confirm that downgrading to setuptools 19.2 fixes the issue for me.
+
+### To install the SimpleITK package with conda run:
+'''
+```powershell
+conda install --channel https://conda.anaconda.org/SimpleITK SimpleITK
+```
+'''

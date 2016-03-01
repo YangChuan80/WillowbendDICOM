@@ -6,7 +6,7 @@ A dialog-based DICOM to video converter.
 ## Introduction
 **DICOM (Digital Imaging and Communications in Medicine)** is a standard for handling, storing, printing, and transmitting information in medical imaging. DICOM files can be exchanged between two entities that are capable of receiving image and patient data in DICOM format by following network communications protocol. DICOM has been widely adopted by hospitals and is making inroads in smaller applications like dentists' and doctors' offices.
 
-**Willowbend DICOM** is a dialog-based application performing the conversion from DICOM format to video format (avi) in order to meet the needs and requirements for universal computer systems (PC, Mac, Linux, etc.). So the ordinary users of such systems can use the converted file to present, communicate and store the universal files. Case reports by physicians, radiologist and medical technicians can use it in medical conferences, educations of clinical medicine, and they will feel free to use universal video formats in the slide presentations.
+**Willowbend DICOM** is a dialog-based application performing the conversion from DICOM format to video format (avi) in order to meet the needs and requirements for universal computer systems (PC, Mac, Linux, etc.). So the ordinary users of such systems can use the converted file to present, communicate and store the universal files. Case reports by physicians, radiologist and medical technicians can use it in medical conferences, educations of clinical medicine, and they will feel free to use universal video formats in the slide presentations. Besides efficiently converting a file from DICOM to AVI format, Willowbend DICOM can implement auto grey-scale optimization and customization for every frame in a DICOM before conversion, and it's able to extract patient's information rapidly from the DICOM files. 
 
 ## Installation from Binaries
 - Download **[WillowbendDICOM_Installer.exe](https://github.com/YangChuan80/p_WillowbendDICOM/blob/master/WillowbendDICOM_Installer.exe?raw=true)** file, which is a NSIS installation file only used in Windows platform. 
@@ -35,6 +35,7 @@ Python interpreter have to be Python 3.4 or later.
 - Click **Browse** button to choose the DICOM file. 
 - Load this chosen file. Don't forget to press **Load** button. When file successfully loaded, a information dialog will pop up to notice you. 
 - Click **Convert** button on the right to convert the currently loaded DICOM file to AVI file. During this session, you will be asked to specify the location you're going to output to. Next you are required to select the VIDEO COMPRESSION options, which the **"Full Frames (Uncompressed)"** is recommended. Click **OK**. You'll wait for about a second, and your AVI file is ready! Congratulations!
+- Optionally, you can customize the value of the **Clip Limit** if you're not satisfied with your converted AVI file with the default value of 3.0. The higher value means the more contrast effect in the video file you'll get. 
 
 ## License
 The MIT License (MIT)

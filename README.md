@@ -8,7 +8,7 @@ A dialog-based DICOM to video converter.
 
 **Willowbend DICOM** is a dialog-based application performing the conversion from DICOM format to video format (avi) in order to meet the needs and requirements for universal computer systems (PC, Mac, Linux, etc.). So the ordinary users of such systems can use the converted file to present, communicate and store the universal files. 
 
-Medical courses and case reports presented by medical imaging related staffs (including Interventional Cardiologists, Physicians of Peripheral Intervention, Neurointerventional Physicians, Medical Imaging Physicians and Radiological Technicians) can use it in medical conferences, educations of clinical medicine, and they will feel free to use universal video formats in the slide presentations. 
+Medical imaging related staffs (including Interventional Cardiologists, Physicians of Peripheral Intervention, Neurointerventional Physicians, Medical Imaging Physicians and Radiological Technicians) can use it in medical conferences, educations and remote consultants of clinical medicine, and they will feel free to use universal video formats in the slide presentations in medical courses and case reports. 
 
 Furthermore, besides efficiently converting a file from DICOM to AVI format, Willowbend DICOM can implement auto grey-scale optimization and customization for every frame in a DICOM before conversion, and it's able to extract patient's information rapidly from the DICOM files. 
 

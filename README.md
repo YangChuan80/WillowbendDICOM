@@ -13,11 +13,13 @@ Medical imaging related staffs (including Interventional Cardiologists, Physicia
 Furthermore, besides efficiently converting a file from DICOM to AVI format, Willowbend DICOM can implement auto grey-scale optimization and customization for every frame in a DICOM before conversion, and it's able to extract patient's information rapidly from the DICOM files. 
 
 ## Installation from Binaries
-- Download **[WillowbendDICOM_Installer.exe](https://github.com/YangChuan80/p_WillowbendDICOM/blob/master/WillowbendDICOM_Installer.exe?raw=true)** file, which is a NSIS installation file only used in Windows platform. 
+- Download **[WillowbendDICOM_Installer.exe](https://github.com/YangChuan80/p_WillowbendDICOM/blob/master/WillowbendDICOM_Installer.exe?raw=true)** file from **[here](https://github.com/YangChuan80/p_WillowbendDICOM/blob/master/WillowbendDICOM_Installer.exe?raw=true)**, which is a NSIS installation file only used in Windows platform. 
 - After downloading, you can install it directly. When finished, a folder with the same name have been made. Enter the folder WillowbendDICOM, run the **WillowbendDICOM.EXE** to go!
+- This option is for ordinary users, who are not required to know any knowledge of Python programming language or to have Python interpreter configured in their computer.
+- Willowbend DICOM can currently be installed on Windows 7 or later platform only.
 
 ## Installation from Source
-There are several dependencies necessarily preinstalled in your Python interpreter:
+This option is only adopted by Python specialist. There are several dependencies necessarily preinstalled in your Python interpreter:
 
 - **SimpleITK**
 ```

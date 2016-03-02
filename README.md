@@ -15,7 +15,7 @@ Furthermore, besides efficiently converting a file from DICOM to AVI format, Wil
 ## Installation from Binaries
 - Download **[WillowbendDICOM_Installer.exe](https://github.com/YangChuan80/p_WillowbendDICOM/blob/master/WillowbendDICOM_Installer.exe?raw=true)** file from **[here](https://github.com/YangChuan80/p_WillowbendDICOM/blob/master/WillowbendDICOM_Installer.exe?raw=true)**, which is a NSIS installation file only used in Windows platform. 
 - After downloading, you can install it directly. When finished, a folder with the same name have been made. Enter the folder WillowbendDICOM, run the **WillowbendDICOM.EXE** to go!
-- This option is for ordinary users, who are not required to know any knowledge of Python programming language or to have Python interpreter configured in their computer.
+- This option is for ordinary users, who are not required to know any knowledge of Python programming language or to have Python interpreter configured in their computers.
 - Willowbend DICOM can currently be installed on Windows 7 or later platform only.
 
 ## Installation from Source
@@ -67,4 +67,4 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE..
 
 ## Contributor List
-- [@wenzhexue](http://github.com/wenzhexue) (Dr. **Wenzhe Xue**, Mayo Clinic) 
+- [@wenzhexue](http://github.com/wenzhexue) (**Wenzhe Xue**, Ph.D., Mayo Clinic) 

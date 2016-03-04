@@ -41,6 +41,11 @@ Python interpreter have to be Python 3.4 or later.
 - **Setuptools & Pyinstaler**
  - If you'd like to use **PyInstaller**, you should downgrade your **setuptools** module to **19.2**.
 
+To perform frozen binary, do this:
+```
+pyinstaller WillowbendDICOM.py -w
+```
+
 ## Instructions
 - Click **Browse** button to choose the DICOM file. 
 - Load this chosen file. Don't forget to press **Load** button. When file successfully loaded, a information dialog will pop up to notice you. 

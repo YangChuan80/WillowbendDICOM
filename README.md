@@ -37,6 +37,10 @@ After you complete the WillowbendDICOM.py file download, run it:
 python WillowbendDICOM.py
 ```
 Python interpreter have to be Python 3.4 or later.
+
+- **Setuptools & Pyinstaler**
+ - If you'd like to use **PyInstaller**, you should downgrade your **setuptools** module to **19.2**.
+
 ## Instructions
 - Click **Browse** button to choose the DICOM file. 
 - Load this chosen file. Don't forget to press **Load** button. When file successfully loaded, a information dialog will pop up to notice you. 

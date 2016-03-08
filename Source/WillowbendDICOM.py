@@ -65,10 +65,14 @@ def writeVideo(img_array, directory):
     frame_num, width, height = img_array.shape
     filename_output = directory + '/' + filename.split('.')[0].split('/')[-1] + '.avi'        
     
-    video = cv2.VideoWriter(filename_output, -1, 15, (width, height)) # Initialize Video File
+    #fourcc = cv2.VideoWriter_fourcc(*'XVID')
+    #video = cv2.VideoWriter(filename_output, fourcc, 15, (width, height))
+    
+    video = cv2.VideoWriter(filename_output, -1, 15, (width, height)) # Initialize Video File   
        
     for img in img_array:
-        video.write(img) # Write video file frame by frame
+        img_rgb = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
+        video.write(img_rgb) # Write video file frame by frame
         
     video.release()
 

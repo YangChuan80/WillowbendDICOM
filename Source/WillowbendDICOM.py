@@ -67,6 +67,7 @@ def writeVideo(img_array, directory):
     
     #fourcc = cv2.VideoWriter_fourcc(*'XVID')
     #video = cv2.VideoWriter(filename_output, fourcc, 15, (width, height))
+    # Above is for Mac OSX use only./////////////////////////////////////////////////////////////
     
     video = cv2.VideoWriter(filename_output, -1, 15, (width, height)) # Initialize Video File   
        

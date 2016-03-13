@@ -3,7 +3,7 @@ A dialog-based DICOM to video converter.
 
 ***Chuan Yang*** (<yangc@sj-hospital.org>)
 
-[![Windows Build status](https://img.shields.io/appveyor/ci/es128/chokidar/master.svg?label=Windows)]
+![Windows Build status](https://img.shields.io/appveyor/ci/es128/chokidar/master.svg?label=Windows)
 [![MIT License](https://img.shields.io/packagist/l/doctrine/orm.svg)](LICENSE)
 [![PyPI](https://img.shields.io/pypi/v/nine.svg)](http://www.pyinstaller.org/)
 [![PyPI](https://img.shields.io/pypi/implementation/Django.svg)](https://en.wikipedia.org/wiki/CPython)

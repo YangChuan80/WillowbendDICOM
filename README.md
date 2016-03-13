@@ -1,16 +1,14 @@
 # Willowbend DICOM
 A dialog-based DICOM to video converter.
 
+***Chuan Yang*** (<yangc@sj-hospital.org>)
+
 [![Windows Build status](https://img.shields.io/appveyor/ci/es128/chokidar/master.svg?label=Windows)](https://github.com/YangChuan80/WillowbendDICOM/raw/master/Installer/WillowbendDICOM_Installer.exe?raw=true) 
 [![MIT License](https://img.shields.io/packagist/l/doctrine/orm.svg)](LICENSE)
 [![PyPI](https://img.shields.io/pypi/v/nine.svg)](http://www.pyinstaller.org/)
 [![PyPI](https://img.shields.io/pypi/implementation/Django.svg)](https://en.wikipedia.org/wiki/CPython)
 [![VersionEye](https://img.shields.io/versioneye/d/ruby/rails.svg)](http://www.simpleitk.org/)
 [![Dependency Status](https://www.versioneye.com/user/projects/52ddcaabec13750540000106/badge.svg)](https://pypi.python.org/pypi/setuptools/19.2)
-
-***Chuan Yang*** (<yangc@sj-hospital.org>)
-
-
 
 ## Introduction
 **DICOM (Digital Imaging and Communications in Medicine)** is a standard for handling, storing, printing, and transmitting information in medical imaging. DICOM files can be exchanged between two entities that are capable of receiving image and patient data in DICOM format by following network communications protocol. DICOM has been widely adopted by hospitals and is making inroads in smaller applications like dentists' and doctors' offices.

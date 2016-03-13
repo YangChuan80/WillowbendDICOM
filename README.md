@@ -6,9 +6,8 @@ A dialog-based DICOM to video converter.
 ![Windows Build status](https://img.shields.io/appveyor/ci/es128/chokidar/master.svg?label=Windows)
 [![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)
 ![Medicine Application](https://img.shields.io/badge/application-medicine-red.svg)
-![Medicine DICOM](https://img.shields.io/badge/application-DICOM-orange.svg)
+![Medicine DICOM](https://img.shields.io/badge/application-DICOM-yellow.svg)
 [![VersionEye](https://img.shields.io/versioneye/d/ruby/rails.svg)](http://www.simpleitk.org/)
-[![Dependency Status](https://www.versioneye.com/user/projects/52ddcaabec13750540000106/badge.svg)](https://pypi.python.org/pypi/setuptools/19.2)
 
 ## Introduction
 **DICOM (Digital Imaging and Communications in Medicine)** is a standard for handling, storing, printing, and transmitting information in medical imaging. DICOM files can be exchanged between two entities that are capable of receiving image and patient data in DICOM format by following network communications protocol. DICOM has been widely adopted by hospitals and is making inroads in smaller applications like dentists' and doctors' offices.

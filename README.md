@@ -1,12 +1,13 @@
 # Willowbend DICOM
 A dialog-based DICOM to video converter.
 
-**Chuan Yang** (<yangc@sj-hospital.org>)
+***Chuan Yang*** (<yangc@sj-hospital.org>)
 
 
 [![Windows Build status](https://img.shields.io/appveyor/ci/es128/chokidar/master.svg?label=Windows)](https://github.com/YangChuan80/WillowbendDICOM/raw/master/Installer/WillowbendDICOM_Installer.exe?raw=true) 
 [![MIT License](https://img.shields.io/packagist/l/doctrine/orm.svg)](LICENSE)
 [![PyPI](https://img.shields.io/pypi/v/nine.svg)]()
+[![PyPI](https://img.shields.io/pypi/implementation/Django.svg)]()
 [![GitHub release](https://img.shields.io/github/release/qubyte/rubidium.svg)]()
 [![VersionEye](https://img.shields.io/versioneye/d/ruby/rails.svg)](README.MD)
 ## Introduction

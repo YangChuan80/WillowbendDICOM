@@ -4,8 +4,6 @@ A dialog-based DICOM to video converter.
 ***Chuan Yang*** (<yangc@sj-hospital.org>)
 
 
-[![Build Status](https://circleci.com/gh/circleci/mongofinil/tree/master.svg?style=shield&circle-token=b14acf911433d315298235b0c2fbf7b2670a92a8)](https://circleci.com/gh/YangChuan80/WillowbendDICOM/1)
-
 ## Introduction
 **DICOM (Digital Imaging and Communications in Medicine)** is a standard for handling, storing, printing, and transmitting information in medical imaging. DICOM files can be exchanged between two entities that are capable of receiving image and patient data in DICOM format by following network communications protocol. DICOM has been widely adopted by hospitals and is making inroads in smaller applications like dentists' and doctors' offices.
 
@@ -17,7 +15,7 @@ Furthermore, besides efficiently converting a file from DICOM to AVI format, Wil
 ![Auto Grey-scale Optimization](agso.png)
 
 ## Installation from Binaries
-- Download **[WillowbendDICOM_Installer.exe](https://github.com/YangChuan80/p_WillowbendDICOM/blob/master/WillowbendDICOM_Installer.exe?raw=true)** file from **[here](https://github.com/YangChuan80/p_WillowbendDICOM/blob/master/WillowbendDICOM_Installer.exe?raw=true)**, which is a NSIS installation file only used in Windows platform. 
+- Download **[WillowbendDICOM_Installer.exe](https://github.com/YangChuan80/WillowbendDICOM/raw/master/Frozen/WillowbendDICOM_Installer.exe?raw=true)** file from **[here](https://github.com/YangChuan80/WillowbendDICOM/raw/master/Frozen/WillowbendDICOM_Installer.exe?raw=true)**, which is a NSIS installation file only used in Windows platform. 
 - After downloading, you can install it directly. When finished, a folder with the same name have been made. Enter the folder WillowbendDICOM, run the **WillowbendDICOM.EXE** to go!
 - This option is for ordinary users, who are not required to possess any knowledge of Python programming language or to have Python interpreter configured on their computers.
 - Willowbend DICOM can currently be installed on Windows 7 or later platform only.

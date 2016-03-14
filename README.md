@@ -6,8 +6,8 @@ A dialog-based DICOM to video converter.
 ![Windows Build status](https://img.shields.io/appveyor/ci/es128/chokidar/master.svg?label=Windows)
 [![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)
 [![Dowloads](https://img.shields.io/badge/downloads-43M-green.svg)](https://github.com/YangChuan80/WillowbendDICOM/raw/master/Installer/WillowbendDICOM_Installer.exe?raw=true)
-[![Medicine Application](https://img.shields.io/badge/application-medicine-red.svg)](README)
-[![Medicine DICOM](https://img.shields.io/badge/application-DICOM-yellow.svg)](README)
+[![Medicine Application](https://img.shields.io/badge/application-medicine-red.svg)](README.md)
+[![Medicine DICOM](https://img.shields.io/badge/application-DICOM-yellow.svg)](README.md)
 
 
 ## Introduction

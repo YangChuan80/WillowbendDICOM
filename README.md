@@ -7,6 +7,7 @@ A dialog-based DICOM to video converter.
 [![GitHub license](https://img.shields.io/npm/l/express.svg)](LICENSE)
 [![Dowloads](https://img.shields.io/badge/downloads-43M-green.svg)](https://github.com/YangChuan80/WillowbendDICOM/raw/master/Installer/WillowbendDICOM_Installer.exe?raw=true)
 [![Medicine Application](https://img.shields.io/badge/application-medicine-red.svg)](README.md)
+[![DICOM](https://img.shields.io/badge/application-DICOM-yellow.svg)](README.md)
 
 <svg xmlns="http://www.w3.org/2000/svg" width="122" height="20"><linearGradient id="b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><mask id="a"><rect width="122" height="20" rx="3" fill="#fff"/></mask><g mask="url(#a)"><path fill="#555" d="M0 0h71v20H0z"/><path fill="#dfb317" d="M71 0h51v20H71z"/><path fill="url(#b)" d="M0 0h122v20H0z"/></g><g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11"><text x="35.5" y="15" fill="#010101" fill-opacity=".3">application</text><text x="35.5" y="14">application</text><text x="95.5" y="15" fill="#010101" fill-opacity=".3">DICOM</text><text x="95.5" y="14">DICOM</text></g></svg>
 

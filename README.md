@@ -3,7 +3,7 @@ A dialog-based DICOM to video converter.
 
 ***Chuan Yang*** (<yangc@sj-hospital.org>)
 
-[![Windows Build status](https://img.shields.io/appveyor/ci/es128/chokidar/master.svg?label=Windows)](https://github.com/YangChuan80/WillowbendDICOM)
+[![Windows Build status](https://img.shields.io/badge/Windows-passing-brightgreen.svg)](https://github.com/YangChuan80/WillowbendDICOM)
 [![MIT license](https://img.shields.io/badge/license-MIT%20License-blue.svg)](LICENSE)
 [![Dowloads](https://img.shields.io/badge/downloads-43M-green.svg)](https://github.com/YangChuan80/WillowbendDICOM/raw/master/Installer/WillowbendDICOM_Installer.exe?raw=true)
 [![Medicine Application](https://img.shields.io/badge/application-medicine-red.svg)](README.md)

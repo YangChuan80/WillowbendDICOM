@@ -61,8 +61,10 @@ pyinstaller WillowbendDICOM.py -w
 - Optionally, you can customize the value of the **Clip Limit** if you're not satisfied with your converted AVI file with the default value of 3.0. The higher value means the more contrast effect in the video file you'll get. 
 
 ## License
-The MIT License (MIT)
+BSD 2-clause "Simplified" License
+
 Copyright (c) 2016, Chuan Yang
+
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

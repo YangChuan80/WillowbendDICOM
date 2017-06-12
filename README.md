@@ -1,5 +1,5 @@
 # Willowbend DICOM
-A dialog-based DICOM to video converter.
+A dialog-based DICOM-to-video converter.
 
 ***Chuan Yang*** (<yangc@sj-hospital.org>)
 

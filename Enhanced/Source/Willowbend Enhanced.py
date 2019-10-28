@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python
 # coding: utf-8
 
 # # Willowbend DICOM Enhanced
@@ -13,6 +13,7 @@
 # ## Libraries
 
 # In[1]:
+
 
 import SimpleITK as sitk
 import cv2
@@ -30,6 +31,7 @@ from tkinter import filedialog
 
 # In[2]:
 
+
 def loadFile(filename):
     ds = sitk.ReadImage(filename)
     img_array = sitk.GetArrayFromImage(ds)
@@ -38,6 +40,7 @@ def loadFile(filename):
 
 
 # In[3]:
+
 
 def loadFileInformation(filename):
     information = {}
@@ -59,6 +62,7 @@ def loadFileInformation(filename):
 
 # In[4]:
 
+
 def autoEqualize(img_array):
     img_array_list = []
     for img in img_array:
@@ -68,6 +72,7 @@ def autoEqualize(img_array):
 
 
 # In[5]:
+
 
 def limitedEqualize(img_array, limit):
     img_array_list = []
@@ -80,6 +85,7 @@ def limitedEqualize(img_array, limit):
 
 
 # In[6]:
+
 
 def writeVideo(img_array, directory, filename):
     frame_num, width, height = img_array.shape
@@ -101,6 +107,7 @@ def writeVideo(img_array, directory, filename):
 # ## GUI Helper Function
 
 # In[7]:
+
 
 def browseFileButton():
     global filenames
@@ -155,11 +162,15 @@ def browseFileButton():
         text_NumberOfFrames.delete('1.0', tk.END)
         text_NumberOfFrames.insert('1.0', information['NumberOfFrames'])
         
+        text_file_num.delete('1.0', tk.END)
+        text_file_num.insert('1.0', len(filenames))
+        
     except:
         filenames = {}
 
 
 # In[8]:
+
 
 def loadFileButton():
     global img_array, frame_num, width, height, information, isLoad
@@ -185,6 +196,7 @@ def loadFileButton():
 
 # In[9]:
 
+
 def convertVideoButton():
     global isLoad, clipLimit
     #isLoad = {}
@@ -209,6 +221,7 @@ def convertVideoButton():
 
 
 # In[10]:
+
 
 def about():
     about_root=tk.Tk()
@@ -253,11 +266,12 @@ def about():
 
 # In[11]:
 
+
 # Main Frame////////////////////////////////////////////////////////////////////////////////////////
 root = tk.Tk()
 
 w = 930 # width for the Tk root
-h = 650 # height for the Tk root
+h = 720 # height for the Tk root
 
 # get screen width and height
 ws = root.winfo_screenwidth() # width of the screen
@@ -271,7 +285,7 @@ y = (hs/2) - (h/2)
 # and where it is placed
 root.geometry('%dx%d+%d+%d' % (w, h, x, y))
 #root.attributes('-fullscreen', True)
-root.title('Willowbend DICOM')
+root.title('Willowbend DICOM Enhanced')
 root.iconbitmap('Heart.ico')
 
 isLoad = {}
@@ -280,7 +294,7 @@ filename = ''
 
 # //////// Frame /////////////////////////////
 
-label_Patients=tk.Label(root,width=125, height=37 , relief='raised', borderwidth=2)
+label_Patients=tk.Label(root,width=125, height=43, font=('tahoma', 9), relief='raised', borderwidth=2)
 label_Patients.place(x=20,y=15)
 
 #///////////Image Title///////////////////////////////
@@ -343,50 +357,60 @@ label_Manufacturer.place(x=560,y=y_position-30)
 
 # File Name
 y_position = 390
-text_filename=tk.Text(root, width=78,height=1, font=('tahoma', 9), bd=1)
+text_filename=tk.Text(root, width=87,height=1, font=('tahoma', 9), bd=1)
 text_filename.place(x=60, y=y_position)
 label_filename=tk.Label(root, text='DICOM Directory:', font=('tahoma', 9))
 label_filename.place(x=60,y=y_position-30)
 
-text_NumberOfFrames=tk.Text(root, width=8,height=1, font=('tahoma', 9), bd=1)
-text_NumberOfFrames.place(x=670, y=y_position)
+text_NumberOfFrames=tk.Text(root, width=7,height=1, font=('tahoma', 9), bd=1)
+text_NumberOfFrames.place(x=720, y=y_position)
 label_NumberOfFrames=tk.Label(root, text='Frames', font=('tahoma', 9))
-label_NumberOfFrames.place(x=760,y=y_position)
+label_NumberOfFrames.place(x=790,y=y_position)
 
 text_clipLimit=tk.Text(root, width=8,height=1, font=('tahoma', 9), bd=1)
-text_clipLimit.place(x=580, y=510)
+text_clipLimit.place(x=580, y=560)
 label_clipLimit=tk.Label(root, text='Clip Limit:', font=('tahoma', 9))
-label_clipLimit.place(x=500,y=510)
+label_clipLimit.place(x=500,y=560)
 text_clipLimit.delete('1.0', tk.END)
 text_clipLimit.insert('1.0', clipLimit)
 
 y_position = 429
-text_filenames=tk.Text(root, width=110,height=3, font=('tahoma', 9), bd=1)
+text_filenames=tk.Text(root, width=112,height=7, font=('tahoma', 9), bd=1)
 text_filenames.place(x=60, y=y_position)
+
+text_file_num = tk.Text(root, width=6,height=1, font=('tahoma', 9), bd=1)
+text_file_num.place(x=60, y=660)
+label_file_num = tk.Label(root, text='files', font=('tahoma', 9))
+label_file_num.place(x=120,y=660)
+
+text_clipLimit.delete('1.0', tk.END)
+text_clipLimit.insert('1.0', clipLimit)
 
 #/////////////Button///////////////////////////////////////////////////////////////
 button_browse=ttk.Button(root, text='Browse...', width=20, command=browseFileButton)
-button_browse.place(x=60, y=510)
+button_browse.place(x=60, y=565)
 
 button_load=ttk.Button(root, text='Load', width=20, command=loadFileButton)
-button_load.place(x=260, y=510)
+button_load.place(x=260, y=565)
 
 button_convert=ttk.Button(root, text='Convert', width=20, command=convertVideoButton)
-button_convert.place(x=700, y=510)
+button_convert.place(x=700, y=565)
 
 button_about=ttk.Button(root, text='About...', width=20, command=about)
-button_about.place(x=260, y=600)
+button_about.place(x=260, y=660)
 
 button_close=ttk.Button(root, width=20, text='Exit', command=root.destroy)
-button_close.place(x=700, y=600)
+button_close.place(x=700, y=660)
 
 
 # In[12]:
+
 
 cv2.destroyAllWindows()
 
 
 # In[13]:
+
 
 root.mainloop()
 
@@ -398,4 +422,9 @@ root.mainloop()
 # 
 # ```powershell
 # conda install --channel https://conda.anaconda.org/SimpleITK SimpleITK
+# ```
+
+# ### The opencv should be the version of 3.4:
+# ```
+# pip install opencv-python==3.4.2.16
 # ```

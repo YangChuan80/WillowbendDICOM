@@ -371,21 +371,21 @@ text_NumberOfFrames.place(x=720, y=y_position)
 label_NumberOfFrames=tk.Label(root, text='Frames', font=('tahoma', 9))
 label_NumberOfFrames.place(x=790,y=y_position)
 
-text_clipLimit=tk.Text(root, width=8,height=1, font=('tahoma', 9), bd=1)
-text_clipLimit.place(x=580, y=560)
+text_clipLimit=tk.Text(root, width=4,height=1, font=('tahoma', 9), bd=1)
+text_clipLimit.place(x=640, y=565)
 label_clipLimit=tk.Label(root, text='Clip Limit:', font=('tahoma', 9))
-label_clipLimit.place(x=500,y=560)
+label_clipLimit.place(x=570,y=565)
 text_clipLimit.delete('1.0', tk.END)
 text_clipLimit.insert('1.0', clipLimit)
+
+text_file_num = tk.Text(root, width=4,height=1, font=('tahoma', 9), bd=1)
+text_file_num.place(x=255, y=565)
+label_file_num = tk.Label(root, text='files', font=('tahoma', 9))
+label_file_num.place(x=305,y=565)
 
 y_position = 429
 text_filenames=tk.Text(root, width=112,height=7, font=('tahoma', 9), bd=1)
 text_filenames.place(x=60, y=y_position)
-
-text_file_num = tk.Text(root, width=6,height=1, font=('tahoma', 9), bd=1)
-text_file_num.place(x=60, y=660)
-label_file_num = tk.Label(root, text='files', font=('tahoma', 9))
-label_file_num.place(x=120,y=660)
 
 text_clipLimit.delete('1.0', tk.END)
 text_clipLimit.insert('1.0', clipLimit)
@@ -395,16 +395,16 @@ button_browse=ttk.Button(root, text='Browse...', width=20, command=browseFileBut
 button_browse.place(x=60, y=565)
 
 button_load=ttk.Button(root, text='Load', width=20, command=loadFileButton)
-button_load.place(x=260, y=565)
+button_load.place(x=390, y=565)
 
 button_convert=ttk.Button(root, text='Convert', width=20, command=convertVideoButton)
-button_convert.place(x=700, y=565)
+button_convert.place(x=720, y=565)
 
 button_about=ttk.Button(root, text='About...', width=20, command=about)
-button_about.place(x=260, y=660)
+button_about.place(x=390, y=660)
 
-button_close=ttk.Button(root, width=20, text='Exit', command=root.destroy)
-button_close.place(x=700, y=660)
+button_close=ttk.Button(root, text='Exit', width=20, command=root.destroy)
+button_close.place(x=720, y=660)
 
 
 # In[12]:
@@ -413,7 +413,7 @@ button_close.place(x=700, y=660)
 cv2.destroyAllWindows()
 
 
-# In[ ]:
+# In[13]:
 
 
 root.mainloop()

@@ -87,7 +87,7 @@ def limitedEqualize(img_array, limit):
 # In[6]:
 
 
-def writeVideo(img_array, directory, filename):
+def writeVideo(img_array, directory, filename): # img_array is a single DICOM file
     frame_num, width, height = img_array.shape
     filename_output = directory + '/' + filename.split('.')[0].split('/')[-1] + '.avi'        
     
@@ -95,7 +95,11 @@ def writeVideo(img_array, directory, filename):
     #video = cv2.VideoWriter(filename_output, fourcc, 15, (width, height))
     # Above is for Mac OSX use only./////////////////////////////////////////////////////////////
     
-    video = cv2.VideoWriter(filename_output, -1, 15, (width, height)) # Initialize Video File   
+    fourcc = cv2.VideoWriter_fourcc('M','J','P','G') # Motion-jpeg codec
+    #fourcc = cv2.VideoWriter_fourcc('M','P','E','G') # MPEG
+    #fourcc = cv2.VideoWriter_fourcc('M','I','M','1') # Microspoft Video 1
+    
+    video = cv2.VideoWriter(filename_output, fourcc, 15, (width, height)) # Initialize Video File   
        
     for img in img_array:
         img_rgb = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
@@ -409,7 +413,7 @@ button_close.place(x=700, y=660)
 cv2.destroyAllWindows()
 
 
-# In[13]:
+# In[ ]:
 
 
 root.mainloop()

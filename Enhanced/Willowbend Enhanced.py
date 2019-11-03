@@ -97,13 +97,16 @@ def writeVideo(img_array, directory, filename): # img_array is a single DICOM fi
     
     fourcc = cv2.VideoWriter_fourcc('M','J','P','G') # Motion-jpeg codec
     #fourcc = cv2.VideoWriter_fourcc('M','P','E','G') # MPEG
-    #fourcc = cv2.VideoWriter_fourcc('M','I','M','1') # Microspoft Video 1
+    #fourcc = cv2.VideoWriter_fourcc('M','P','4','2') # MPEG-4
+    #fourcc = cv2.VideoWriter_fourcc('Y','4','1','P') # Brooktree YUV 4:1:1
     
     video = cv2.VideoWriter(filename_output, fourcc, 15, (width, height)) # Initialize Video File   
        
-    for img in img_array:
-        img_rgb = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
-        video.write(img_rgb) # Write video file frame by frame
+    for frame in img_array:
+        frame_rgb = cv2.cvtColor(frame, cv2.COLOR_GRAY2BGR)
+        video.write(frame_rgb) # Write video file frame by frame
+        
+        #cv2.imshow('frame', frame) # Show the videos
         
     video.release()
 
@@ -183,7 +186,6 @@ def loadFileButton():
     width = {}
     height = {}
     information = {}
-    isLoad = {}
     
     if filenames == ():
         messagebox.showwarning("No File", "Sorry, no file loaded! Please choose DICOM file first.")
@@ -192,7 +194,7 @@ def loadFileButton():
             for filename in filenames:                
                 img_array[filename], frame_num[filename], width[filename], height[filename] = loadFile(filename)
                 information[filename] = loadFileInformation(filename) 
-                isLoad[filename] = 1
+                isLoad = 1
             messagebox.showinfo("DICOM File Loaded", "DICOM file successfully loaded!")
         except:
             messagebox.showwarning("File Loading Failed", "Sorry, file loading failed! Please check the file format.")
@@ -202,26 +204,27 @@ def loadFileButton():
 
 
 def convertVideoButton():
-    global isLoad, clipLimit
-    #isLoad = {}
+    global isLoad, clipLimit, filename
+             
+    if filenames == ():
+        messagebox.showwarning("No File to be Converted", "Sorry, no file to be converted! Please choose a DICOM file first.")
+    elif isLoad == 0:
+        messagebox.showwarning("No File Loaded", "Sorry, no file loaded! Please load the chosen DICOM file.")
     
-    clipLimit = float(text_clipLimit.get('1.0', tk.END))
+    else:
+        clipLimit = float(text_clipLimit.get('1.0', tk.END))
     
-    directory = filedialog.askdirectory()
-    
-    for filename in filenames:        
-        if filename == '':
-            messagebox.showwarning("No File to be Converted", "Sorry, no file to be converted! Please choose a DICOM file first.")
-        elif isLoad[filename] == 0:
-            messagebox.showwarning("No File Loaded", "Sorry, no file loaded! Please load the chosen DICOM file.")
-        elif directory == '':
+        directory = filedialog.askdirectory()
+        
+        if directory == '':
             messagebox.showwarning("No Directory", "Sorry, no directory shown! Please specify the output directory.")
         else:
-            img_array_limited_equalized = limitedEqualize(img_array[filename], clipLimit)
-            writeVideo(img_array_limited_equalized, directory, filename)
-            #messagebox.showinfo("Video File Converted", "Video file successfully generated!")
-            isLoad[filename] = 0
-    messagebox.showinfo("Video File Converted", "Video(s) successfully converted!")
+            for filename in filenames:  
+                img_array_limited_equalized = limitedEqualize(img_array[filename], clipLimit)
+                writeVideo(img_array_limited_equalized, directory, filename)
+                #messagebox.showinfo("Video File Converted", "Video file successfully generated!")
+                isLoad = 0
+            messagebox.showinfo("Video File Converted", "Video(s) successfully converted!")
 
 
 # In[10]:
@@ -247,7 +250,7 @@ def about():
     about_root.title('About Willowbend DICOM')  
     about_root.iconbitmap('Heart.ico')
 
-    label_author=tk.Label(about_root,text='Willowbend DICOM Version 2.0', font=('tahoma', 9))
+    label_author=tk.Label(about_root,text='Willowbend DICOM Version 2.5', font=('tahoma', 9))
     label_author.place(x=90,y=30)
 
     label_author=tk.Label(about_root,text='Copyright (C) 2019', font=('tahoma', 9))
@@ -274,7 +277,7 @@ def about():
 # Main Frame////////////////////////////////////////////////////////////////////////////////////////
 root = tk.Tk()
 
-w = 930 # width for the Tk root
+w = 942 # width for the Tk root
 h = 720 # height for the Tk root
 
 # get screen width and height
@@ -292,13 +295,14 @@ root.geometry('%dx%d+%d+%d' % (w, h, x, y))
 root.title('Willowbend DICOM Enhanced')
 root.iconbitmap('Heart.ico')
 
-isLoad = {}
-clipLimit = 2.0
+isLoad = 0
+clipLimit = 1.5
 filename = ''
+filenames = ()
 
 # //////// Frame /////////////////////////////
 
-label_Patients=tk.Label(root,width=125, height=43, font=('tahoma', 9), relief='raised', borderwidth=2)
+label_Patients=tk.Label(root,width=126, height=43, font=('tahoma', 9), relief='raised', borderwidth=2)
 label_Patients.place(x=20,y=15)
 
 #///////////Image Title///////////////////////////////
@@ -395,13 +399,13 @@ button_browse=ttk.Button(root, text='Browse...', width=20, command=browseFileBut
 button_browse.place(x=60, y=565)
 
 button_load=ttk.Button(root, text='Load', width=20, command=loadFileButton)
-button_load.place(x=390, y=565)
+button_load.place(x=380, y=565)
 
 button_convert=ttk.Button(root, text='Convert', width=20, command=convertVideoButton)
 button_convert.place(x=720, y=565)
 
 button_about=ttk.Button(root, text='About...', width=20, command=about)
-button_about.place(x=390, y=660)
+button_about.place(x=380, y=660)
 
 button_close=ttk.Button(root, text='Exit', width=20, command=root.destroy)
 button_close.place(x=720, y=660)

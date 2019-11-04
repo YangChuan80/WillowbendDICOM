@@ -33,14 +33,22 @@ This option is only adopted by Python specialist. There are several dependencies
 ```
  conda install --channel https://conda.anaconda.org/SimpleITK SimpleITK
  ```
+Also,
+```
+pip install simpleitk
+```
 
 - **Pydicom** 1.0
  - Download pydicom source from [https://github.com/darcymason/pydicom](https://github.com/darcymason/pydicom)
+ - Of course, also:
+```
+pip install pydicom
+```
 
 - **OpenCV**
- - The opencv should be the version of 3.4:
+ - The opencv should be the the latest version:
 ```
-pip install opencv-python==3.4.2.16
+pip install opencv-python -U
 ```
 After you complete the WillowbendDICOM.py file download, run it:
 ```

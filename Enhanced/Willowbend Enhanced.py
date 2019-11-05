@@ -233,7 +233,7 @@ def convertVideoButton():
 def about():
     about_root=tk.Tk()
     
-    w = 367 # width for the Tk root
+    w = 370 # width for the Tk root
     h = 230 # height for the Tk root
 
     # get screen width and height
@@ -260,7 +260,7 @@ def about():
     label_author.place(x=125,y=90)
     
     label_author=tk.Label(about_root,text='Shengjing Hospital of China Medical University', font=('tahoma', 9))
-    label_author.place(x=50,y=120)
+    label_author.place(x=65,y=120)
    
 
     button_refresh=ttk.Button(about_root, width=15, text='OK', command=about_root.destroy)
@@ -285,7 +285,7 @@ ws = root.winfo_screenwidth() # width of the screen
 hs = root.winfo_screenheight() # height of the screen
 
 # calculate x and y coordinates for the Tk root window
-x = (ws/2) - (w/1.5)
+x = (ws/2) - (w/2)
 y = (hs/2) - (h/1.6)
 
 # set the dimensions of the screen 

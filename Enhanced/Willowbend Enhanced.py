@@ -277,7 +277,7 @@ def about():
 # Main Frame////////////////////////////////////////////////////////////////////////////////////////
 root = tk.Tk()
 
-w = 942 # width for the Tk root
+w = 949 # width for the Tk root
 h = 720 # height for the Tk root
 
 # get screen width and height
@@ -285,8 +285,8 @@ ws = root.winfo_screenwidth() # width of the screen
 hs = root.winfo_screenheight() # height of the screen
 
 # calculate x and y coordinates for the Tk root window
-x = (ws/2) - (w/2)
-y = (hs/2) - (h/2)
+x = (ws/2) - (w/1.5)
+y = (hs/2) - (h/1.6)
 
 # set the dimensions of the screen 
 # and where it is placed
@@ -302,17 +302,17 @@ filenames = ()
 
 # //////// Frame /////////////////////////////
 
-label_Patients=tk.Label(root,width=126, height=43, font=('tahoma', 9), relief='raised', borderwidth=2)
+label_Patients=tk.Label(root,width=128, height=43, font=('tahoma', 9), relief='raised', borderwidth=2)
 label_Patients.place(x=20,y=15)
 
 #///////////Image Title///////////////////////////////
 photo=tk.PhotoImage(file='Title.png')
 label_photo=tk.Label(root, image=photo, relief='sunken', borderwidth=3)
-label_photo.place(x=260,y=35)
+label_photo.place(x=300,y=35)
 
 #/////////////Text///////////////////////////////////////////////////////////////////
 
-text_PatientID=tk.Text(root, width=20,height=1, font=('tahoma', 9), bd=1)
+text_PatientID=tk.Text(root, width=26,height=1, font=('tahoma', 9), bd=1)
 text_PatientID.place(x=60, y=90)
 label_PatientID=tk.Label(root, text='Patient ID', font=('tahoma', 9))
 label_PatientID.place(x=60,y=60)
@@ -353,12 +353,12 @@ label_StudyTime.place(x=600,y=y_position-30)
 
 #////////////////////////////////////
 y_position = 320
-text_InstitutionName=tk.Text(root, width=50,height=1, font=('tahoma', 9), bd=1)
+text_InstitutionName=tk.Text(root, width=60,height=1, font=('tahoma', 9), bd=1)
 text_InstitutionName.place(x=60, y=y_position)
 label_InstitutionName=tk.Label(root, text='Institution Name:', font=('tahoma', 9))
 label_InstitutionName.place(x=60,y=y_position-30)
 
-text_Manufacturer=tk.Text(root, width=38,height=1, font=('tahoma', 9), bd=1)
+text_Manufacturer=tk.Text(root, width=42,height=1, font=('tahoma', 9), bd=1)
 text_Manufacturer.place(x=560, y=y_position)
 label_Manufacturer=tk.Label(root, text='Manufacturer:', font=('tahoma', 9))
 label_Manufacturer.place(x=560,y=y_position-30)
@@ -371,9 +371,9 @@ label_filename=tk.Label(root, text='DICOM Directory:', font=('tahoma', 9))
 label_filename.place(x=60,y=y_position-30)
 
 text_NumberOfFrames=tk.Text(root, width=7,height=1, font=('tahoma', 9), bd=1)
-text_NumberOfFrames.place(x=720, y=y_position)
+text_NumberOfFrames.place(x=745, y=y_position)
 label_NumberOfFrames=tk.Label(root, text='Frames', font=('tahoma', 9))
-label_NumberOfFrames.place(x=790,y=y_position)
+label_NumberOfFrames.place(x=815,y=y_position)
 
 text_clipLimit=tk.Text(root, width=4,height=1, font=('tahoma', 9), bd=1)
 text_clipLimit.place(x=640, y=565)
@@ -388,7 +388,7 @@ label_file_num = tk.Label(root, text='files', font=('tahoma', 9))
 label_file_num.place(x=305,y=565)
 
 y_position = 429
-text_filenames=tk.Text(root, width=112,height=7, font=('tahoma', 9), bd=1)
+text_filenames=tk.Text(root, width=115,height=7, font=('tahoma', 9), bd=1)
 text_filenames.place(x=60, y=y_position)
 
 text_clipLimit.delete('1.0', tk.END)
@@ -422,17 +422,3 @@ cv2.destroyAllWindows()
 
 root.mainloop()
 
-
-# ### !!! Make sure to downgrade setuptools to 19.2. If this does get the frozen binary with PyInstaller !!!!
-# Just hit this myself. Can confirm that downgrading to setuptools 19.2 fixes the issue for me.
-
-# ### To install the SimpleITK package with conda run:
-# 
-# ```powershell
-# conda install --channel https://conda.anaconda.org/SimpleITK SimpleITK
-# ```
-
-# ### The opencv should be the version of 3.4:
-# ```
-# pip install opencv-python==3.4.2.16
-# ```

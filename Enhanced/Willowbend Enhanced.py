@@ -87,18 +87,24 @@ def limitedEqualize(img_array, limit):
 # In[6]:
 
 
-def writeVideo(img_array, directory, filename): # img_array is a single DICOM file
+def writeVideo(img_array, directory, filename, targetFormat): # img_array is a single DICOM file
     frame_num, width, height = img_array.shape
-    filename_output = directory + '/' + filename.split('.')[0].split('/')[-1] + '.avi'        
     
-    #fourcc = cv2.VideoWriter_fourcc(*'XVID')
-    #video = cv2.VideoWriter(filename_output, fourcc, 15, (width, height))
-    # Above is for Mac OSX use only./////////////////////////////////////////////////////////////
-    
-    fourcc = cv2.VideoWriter_fourcc('M','J','P','G') # Motion-jpeg codec
-    #fourcc = cv2.VideoWriter_fourcc('M','P','E','G') # MPEG
-    #fourcc = cv2.VideoWriter_fourcc('M','P','4','2') # MPEG-4
-    #fourcc = cv2.VideoWriter_fourcc('Y','4','1','P') # Brooktree YUV 4:1:1
+    if targetFormat == 'AVI':      
+        filename_output = directory + '/' + filename.split('.')[0].split('/')[-1] + '.avi'  
+        fourcc = cv2.VideoWriter_fourcc('M','J','P','G') # Motion-jpeg codec
+
+        #fourcc = cv2.VideoWriter_fourcc(*'XVID')
+        #video = cv2.VideoWriter(filename_output, fourcc, 15, (width, height))
+        # Above is for Mac OSX use only./////////////////////////////////////////////////////////////
+
+        
+        #fourcc = cv2.VideoWriter_fourcc('M','P','E','G') # MPEG
+        
+        #fourcc = cv2.VideoWriter_fourcc('Y','4','1','P') # Brooktree YUV 4:1:1
+    elif targetFormat == 'MP4':
+        filename_output = directory + '/' + filename.split('.')[0].split('/')[-1] + '.mp4'
+        fourcc = cv2.VideoWriter_fourcc('M','P','4','2') # MPEG-4        
     
     video = cv2.VideoWriter(filename_output, fourcc, 15, (width, height)) # Initialize Video File   
        
@@ -205,6 +211,8 @@ def loadFileButton():
 
 def convertVideoButton():
     global isLoad, clipLimit, filename
+    
+    targetFormat = combo_target_format.get().rstrip()
              
     if filenames == ():
         messagebox.showwarning("No File to be Converted", "Sorry, no file to be converted! Please choose a DICOM file first.")
@@ -221,7 +229,7 @@ def convertVideoButton():
         else:
             for filename in filenames:  
                 img_array_limited_equalized = limitedEqualize(img_array[filename], clipLimit)
-                writeVideo(img_array_limited_equalized, directory, filename)
+                writeVideo(img_array_limited_equalized, directory, filename, targetFormat)
                 #messagebox.showinfo("Video File Converted", "Video file successfully generated!")
                 isLoad = 0
             messagebox.showinfo("Video File Converted", "Video(s) successfully converted!")
@@ -393,6 +401,19 @@ text_filenames.place(x=60, y=y_position)
 
 text_clipLimit.delete('1.0', tk.END)
 text_clipLimit.insert('1.0', clipLimit)
+
+# //////// Combo /////////////////////
+
+y_position = 660
+
+combo_target_format = ttk.Combobox(root, width=7, height=1, font=('tahoma', 8))
+combo_target_format.place(x=60, y=y_position)
+label_target_format = tk.Label(root, text='Output Format:', font=('tahoma', 8))
+label_target_format.place(x=60,y=y_position-25)
+combo_target_format['values'] = ('AVI', 'MP4')
+combo_target_format['state'] = 'readonly'
+
+combo_target_format.set('AVI')
 
 #/////////////Button///////////////////////////////////////////////////////////////
 button_browse=ttk.Button(root, text='Browse...', width=20, command=browseFileButton)

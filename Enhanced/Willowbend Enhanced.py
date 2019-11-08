@@ -232,7 +232,7 @@ def convertVideoButton():
                 writeVideo(img_array_limited_equalized, directory, filename, targetFormat)
                 #messagebox.showinfo("Video File Converted", "Video file successfully generated!")
                 isLoad = 0
-            messagebox.showinfo("Video File Converted", "Video(s) successfully converted!")
+            messagebox.showinfo("Video File Converted", targetFormat + " video(s) successfully converted!")
 
 
 # In[10]:
@@ -258,7 +258,7 @@ def about():
     about_root.title('About Willowbend DICOM')  
     about_root.iconbitmap('Heart.ico')
 
-    label_author=tk.Label(about_root,text='Willowbend DICOM Version 2.5', font=('tahoma', 9))
+    label_author=tk.Label(about_root,text='Willowbend DICOM Version 2.6', font=('tahoma', 9))
     label_author.place(x=90,y=30)
 
     label_author=tk.Label(about_root,text='Copyright (C) 2019', font=('tahoma', 9))

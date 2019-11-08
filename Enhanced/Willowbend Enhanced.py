@@ -90,7 +90,7 @@ def limitedEqualize(img_array, limit):
 def writeVideo(img_array, directory, filename, targetFormat): # img_array is a single DICOM file
     frame_num, width, height = img_array.shape
     
-    if targetFormat == 'AVI':      
+    if targetFormat == 'AVI':   # If choose the AVI output format   
         filename_output = directory + '/' + filename.split('.')[0].split('/')[-1] + '.avi'  
         fourcc = cv2.VideoWriter_fourcc('M','J','P','G') # Motion-jpeg codec
 
@@ -102,11 +102,13 @@ def writeVideo(img_array, directory, filename, targetFormat): # img_array is a s
         #fourcc = cv2.VideoWriter_fourcc('M','P','E','G') # MPEG
         
         #fourcc = cv2.VideoWriter_fourcc('Y','4','1','P') # Brooktree YUV 4:1:1
-    elif targetFormat == 'MP4':
+    elif targetFormat == 'MP4': # If choose the MP4 output format
         filename_output = directory + '/' + filename.split('.')[0].split('/')[-1] + '.mp4'
         fourcc = cv2.VideoWriter_fourcc('M','P','4','2') # MPEG-4        
     
-    video = cv2.VideoWriter(filename_output, fourcc, 15, (width, height)) # Initialize Video File   
+    # Key statement: default value is 15./////////////////////////
+    video = cv2.VideoWriter(filename_output, fourcc, fps, (width, height)) # Initialize Video File 
+    # The parameter fps is the frame per second. It's a global variable
        
     for frame in img_array:
         frame_rgb = cv2.cvtColor(frame, cv2.COLOR_GRAY2BGR)
@@ -210,9 +212,7 @@ def loadFileButton():
 
 
 def convertVideoButton():
-    global isLoad, clipLimit, filename
-    
-    targetFormat = combo_target_format.get().rstrip()
+    global isLoad, clipLimit, filename, fps    
              
     if filenames == ():
         messagebox.showwarning("No File to be Converted", "Sorry, no file to be converted! Please choose a DICOM file first.")
@@ -221,6 +221,8 @@ def convertVideoButton():
     
     else:
         clipLimit = float(text_clipLimit.get('1.0', tk.END))
+        targetFormat = combo_target_format.get().rstrip()
+        fps = int(text_fps.get('1.0', tk.END))
     
         directory = filedialog.askdirectory()
         
@@ -305,6 +307,7 @@ root.iconbitmap('Heart.ico')
 
 isLoad = 0
 clipLimit = 1.5
+fps = 15
 filename = ''
 filenames = ()
 
@@ -407,13 +410,21 @@ text_clipLimit.insert('1.0', clipLimit)
 y_position = 660
 
 combo_target_format = ttk.Combobox(root, width=7, height=1, font=('tahoma', 8))
-combo_target_format.place(x=60, y=y_position)
+combo_target_format.place(x=60, y=y_position+5)
 label_target_format = tk.Label(root, text='Output Format:', font=('tahoma', 8))
-label_target_format.place(x=60,y=y_position-25)
+label_target_format.place(x=60,y=y_position-20)
 combo_target_format['values'] = ('AVI', 'MP4')
 combo_target_format['state'] = 'readonly'
 
 combo_target_format.set('AVI')
+
+text_fps = tk.Text(root, width=10,height=1, font=('tahoma', 9), bd=1)
+text_fps.place(x=200, y=y_position+5)
+label_text_fps = tk.Label(root, text='Frame per second', font=('tahoma', 9))
+label_text_fps.place(x=200,y=y_position-20)
+
+text_fps.delete('1.0', tk.END)
+text_fps.insert('1.0', fps)
 
 #/////////////Button///////////////////////////////////////////////////////////////
 button_browse=ttk.Button(root, text='Browse...', width=20, command=browseFileButton)

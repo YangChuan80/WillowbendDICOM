@@ -49,15 +49,16 @@ def loadFileInformation(filename):
     information['PatientID'] = ds.PatientID
     information['PatientName'] = ds.PatientName
     information['PatientBirthDate'] = ds.PatientBirthDate
-    information['PatientSex'] = ds.PatientSex
+    information['PatientSex'] =  ds.PatientSex
     information['StudyID'] = ds.StudyID
     information['StudyDate'] = ds.StudyDate
     information['StudyTime'] = ds.StudyTime
     information['InstitutionName'] = ds.InstitutionName
     information['Manufacturer'] = ds.Manufacturer
-    information['NumberOfFrames'] =ds.NumberOfFrames
+    information['NumberOfFrames'] = ds.NumberOfFrames
+    information['CineRate'] = ds.CineRate # extract the frame per second value
     
-    return information
+    return information # The return type is dictionary
 
 
 # In[4]:
@@ -87,7 +88,7 @@ def limitedEqualize(img_array, limit):
 # In[6]:
 
 
-def writeVideo(img_array, directory, filename, targetFormat): # img_array is a single DICOM file
+def writeVideo(img_array, filename, directory, targetFormat): # img_array is a single DICOM file
     frame_num, width, height = img_array.shape
     
     if targetFormat == 'AVI':   # If choose the AVI output format   
@@ -107,9 +108,11 @@ def writeVideo(img_array, directory, filename, targetFormat): # img_array is a s
         fourcc = cv2.VideoWriter_fourcc('M','P','4','2') # MPEG-4        
     
     # Key statement: default value is 15./////////////////////////
-    video = cv2.VideoWriter(filename_output, fourcc, fps, (width, height)) # Initialize Video File 
-    # The parameter fps is the frame per second. It's a global variable
-       
+    cineRate = int(informations[filename]['CineRate'])
+    
+    video = cv2.VideoWriter(filename_output, fourcc, cineRate, (width, height)) # Initialize Video File 
+    # The parameter cineRate is the frame per second. 
+    
     for frame in img_array:
         frame_rgb = cv2.cvtColor(frame, cv2.COLOR_GRAY2BGR)
         video.write(frame_rgb) # Write video file frame by frame
@@ -128,8 +131,13 @@ def browseFileButton():
     global filenames
     file_list = []
     
+    # The variable informations is all the dicom information dictionary, 
+    # while the variable information is the first dcm file(filename[0]) dicom information
+    
     try:
         filenames = filedialog.askopenfilenames(filetypes=(('DICOM files', '*.dcm'), ('All files', '*.*')))
+        
+        # Extract the first one's information
         information = loadFileInformation(filenames[0])
         
         
@@ -175,11 +183,14 @@ def browseFileButton():
         text_Manufacturer.insert('1.0', information['Manufacturer'])
 
         text_NumberOfFrames.delete('1.0', tk.END)
-        text_NumberOfFrames.insert('1.0', information['NumberOfFrames'])
+        text_NumberOfFrames.insert('1.0', information['NumberOfFrames'])        
+          
+        text_fps.delete('1.0', tk.END)
+        text_fps.insert('1.0', information['CineRate'])        
         
         text_file_num.delete('1.0', tk.END)
         text_file_num.insert('1.0', len(filenames))
-        
+      
     except:
         filenames = {}
 
@@ -188,12 +199,12 @@ def browseFileButton():
 
 
 def loadFileButton():
-    global img_array, frame_num, width, height, information, isLoad
+    global img_array, frame_num, width, height, informations, isLoad
     img_array = {}
     frame_num = {}
     width = {}
     height = {}
-    information = {}
+    informations = {}
     
     if filenames == ():
         messagebox.showwarning("No File", "Sorry, no file loaded! Please choose DICOM file first.")
@@ -201,7 +212,10 @@ def loadFileButton():
         try:
             for filename in filenames:                
                 img_array[filename], frame_num[filename], width[filename], height[filename] = loadFile(filename)
-                information[filename] = loadFileInformation(filename) 
+                
+                # Extract the all the information including fps(Frame per Second)
+                informations[filename] = loadFileInformation(filename) # Return is a dictionary
+                # The keys are filenames
                 isLoad = 1
             messagebox.showinfo("DICOM File Loaded", "DICOM file successfully loaded!")
         except:
@@ -222,8 +236,7 @@ def convertVideoButton():
     else:
         clipLimit = float(text_clipLimit.get('1.0', tk.END))
         targetFormat = combo_target_format.get().rstrip()
-        fps = int(text_fps.get('1.0', tk.END))
-    
+            
         directory = filedialog.askdirectory()
         
         if directory == '':
@@ -231,7 +244,7 @@ def convertVideoButton():
         else:
             for filename in filenames:  
                 img_array_limited_equalized = limitedEqualize(img_array[filename], clipLimit)
-                writeVideo(img_array_limited_equalized, directory, filename, targetFormat)
+                writeVideo(img_array_limited_equalized, filename, directory, targetFormat)
                 #messagebox.showinfo("Video File Converted", "Video file successfully generated!")
                 isLoad = 0
             messagebox.showinfo("Video File Converted", targetFormat + " video(s) successfully converted!")
@@ -260,7 +273,7 @@ def about():
     about_root.title('About Willowbend DICOM')  
     about_root.iconbitmap('Heart.ico')
 
-    label_author=tk.Label(about_root,text='Willowbend DICOM Version 2.6', font=('tahoma', 9))
+    label_author=tk.Label(about_root,text='Willowbend DICOM Version 2.8', font=('tahoma', 9))
     label_author.place(x=90,y=30)
 
     label_author=tk.Label(about_root,text='Copyright (C) 2019', font=('tahoma', 9))
@@ -307,7 +320,7 @@ root.iconbitmap('Heart.ico')
 
 isLoad = 0
 clipLimit = 1.5
-fps = 15
+fps = 0
 filename = ''
 filenames = ()
 
@@ -330,20 +343,31 @@ label_PatientID.place(x=60,y=60)
 
 #//////////////////
 y_position = 180
-text_PatientName=tk.Text(root, width=30,height=1, font=('tahoma', 9), bd=1)
+text_PatientName=tk.Text(root, width=28,height=1, font=('tahoma', 9), bd=1)
 text_PatientName.place(x=60, y=y_position)
 label_PatientName=tk.Label(root, text='Patient\'s Name:', font=('tahoma', 9))
 label_PatientName.place(x=60,y=y_position-30)
 
-text_PatientSex=tk.Text(root, width=15,height=1, font=('tahoma', 9), bd=1)
-text_PatientSex.place(x=360, y=y_position)
+text_PatientSex=tk.Text(root, width=12,height=1, font=('tahoma', 9), bd=1)
+text_PatientSex.place(x=340, y=y_position)
 label_PatientSex=tk.Label(root, text='Gender:', font=('tahoma', 9))
-label_PatientSex.place(x=360,y=y_position-30)
+label_PatientSex.place(x=340,y=y_position-30)
 
-text_PatientBirthDate=tk.Text(root, width=25,height=1, font=('tahoma', 9), bd=1)
-text_PatientBirthDate.place(x=560, y=y_position)
+text_PatientBirthDate=tk.Text(root, width=24,height=1, font=('tahoma', 9), bd=1)
+text_PatientBirthDate.place(x=500, y=y_position)
 label_PatientBirthDate=tk.Label(root, text='Birth Date:', font=('tahoma', 9))
-label_PatientBirthDate.place(x=560,y=y_position-30)
+label_PatientBirthDate.place(x=500,y=y_position-30)
+
+text_fps = tk.Text(root, width=6,height=1, font=('tahoma', 9), bd=1)
+text_fps.place(x=760, y=y_position)
+label_text_fps = tk.Label(root, text='Cine Rate', font=('tahoma', 9))
+label_text_fps.place(x=760,y=y_position-30)
+
+label_fps = tk.Label(root, text='fps', font=('tahoma', 9))
+label_fps.place(x=830,y=y_position)
+
+text_fps.delete('1.0', tk.END)
+text_fps.insert('1.0', fps)
 
 #//////////////////////////////////////////////////////////////////////////////////
 y_position = 250
@@ -417,14 +441,6 @@ combo_target_format['values'] = ('AVI', 'MP4')
 combo_target_format['state'] = 'readonly'
 
 combo_target_format.set('AVI')
-
-text_fps = tk.Text(root, width=10,height=1, font=('tahoma', 9), bd=1)
-text_fps.place(x=200, y=y_position+5)
-label_text_fps = tk.Label(root, text='Frame per second', font=('tahoma', 9))
-label_text_fps.place(x=200,y=y_position-20)
-
-text_fps.delete('1.0', tk.END)
-text_fps.insert('1.0', fps)
 
 #/////////////Button///////////////////////////////////////////////////////////////
 button_browse=ttk.Button(root, text='Browse...', width=20, command=browseFileButton)

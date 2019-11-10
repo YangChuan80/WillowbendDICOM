@@ -56,7 +56,13 @@ def loadFileInformation(filename):
     information['InstitutionName'] = ds.InstitutionName
     information['Manufacturer'] = ds.Manufacturer
     information['NumberOfFrames'] = ds.NumberOfFrames
-    information['CineRate'] = ds.CineRate # extract the frame per second value
+    
+    # Try whether the dicom can extract the CineRate attribute.
+    # if not, then follow the global variable fps
+    try:
+        information['CineRate'] = ds.CineRate # extract the frame per second value
+    except:
+        information['CineRate'] = fps
     
     return information # The return type is dictionary
 
@@ -128,8 +134,10 @@ def writeVideo(img_array, filename, directory, targetFormat): # img_array is a s
 
 
 def browseFileButton():
-    global filenames
-    file_list = []
+    global filenames, fps
+    
+    file_list = []    
+    fps = int(text_fps.get('1.0', tk.END))
     
     # The variable informations is all the dicom information dictionary, 
     # while the variable information is the first dcm file(filename[0]) dicom information
@@ -138,8 +146,7 @@ def browseFileButton():
         filenames = filedialog.askopenfilenames(filetypes=(('DICOM files', '*.dcm'), ('All files', '*.*')))
         
         # Extract the first one's information
-        information = loadFileInformation(filenames[0])
-        
+        information = loadFileInformation(filenames[0])        
         
         for filename in filenames:
             item = filename.split('/')[-1]
@@ -184,7 +191,7 @@ def browseFileButton():
 
         text_NumberOfFrames.delete('1.0', tk.END)
         text_NumberOfFrames.insert('1.0', information['NumberOfFrames'])        
-          
+                
         text_fps.delete('1.0', tk.END)
         text_fps.insert('1.0', information['CineRate'])        
         
@@ -257,7 +264,7 @@ def about():
     about_root=tk.Tk()
     
     w = 370 # width for the Tk root
-    h = 230 # height for the Tk root
+    h = 270 # height for the Tk root
 
     # get screen width and height
     ws = about_root.winfo_screenwidth() # width of the screen
@@ -273,21 +280,24 @@ def about():
     about_root.title('About Willowbend DICOM')  
     about_root.iconbitmap('Heart.ico')
 
-    label_author=tk.Label(about_root,text='Willowbend DICOM Version 2.8', font=('tahoma', 9))
-    label_author.place(x=90,y=30)
+    label_version=tk.Label(about_root,text='Willowbend DICOM Version 3.0', font=('tahoma', 9))
+    label_version.place(x=90,y=30)
 
-    label_author=tk.Label(about_root,text='Copyright (C) 2019', font=('tahoma', 9))
-    label_author.place(x=125,y=60)
+    label_copyright=tk.Label(about_root,text='Copyright (C) 2019', font=('tahoma', 9))
+    label_copyright.place(x=125,y=60)
     
     label_author=tk.Label(about_root,text='Author: Chuan Yang', font=('tahoma', 9))
     label_author.place(x=125,y=90)
     
-    label_author=tk.Label(about_root,text='Shengjing Hospital of China Medical University', font=('tahoma', 9))
-    label_author.place(x=65,y=120)
+    label_institution=tk.Label(about_root,text='Shengjing Hospital of China Medical University', font=('tahoma', 9))
+    label_institution.place(x=65,y=120)
+    
+    label_author=tk.Label(about_root,text='License: The MIT License (MIT)', font=('tahoma', 9))
+    label_author.place(x=90,y=150)
    
 
     button_refresh=ttk.Button(about_root, width=15, text='OK', command=about_root.destroy)
-    button_refresh.place(x=135, y=170)
+    button_refresh.place(x=135, y=210)
 
     about_root.mainloop()
 
@@ -320,7 +330,7 @@ root.iconbitmap('Heart.ico')
 
 isLoad = 0
 clipLimit = 1.5
-fps = 0
+fps = 15
 filename = ''
 filenames = ()
 

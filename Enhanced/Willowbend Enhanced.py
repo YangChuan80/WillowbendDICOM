@@ -62,7 +62,7 @@ def loadFileInformation(filename):
     try:
         information['CineRate'] = ds.CineRate # extract the frame per second value
     except:
-        information['CineRate'] = fps
+        information['CineRate'] = fps # Not all the DICOM has the CineRate attribute
     
     return information # The return type is dictionary
 

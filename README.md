@@ -21,7 +21,7 @@ Furthermore, besides efficiently converting a file from DICOM to AVI format, Wil
 [![Auto Grey-scale Optimization](agso.png)](README.md)
 
 ## Installation from Binaries
-- Download **[WillowbendDICOM_Installer.exe](https://github.com/YangChuan80/WillowbendDICOM/blob/master/Enhanced/installer/Willowbend%20Enhanced%2032-bit%20optFPS.exe?raw=true)** file from **[here](https://github.com/YangChuan80/WillowbendDICOM/blob/master/Enhanced/installer/Willowbend%20Enhanced%2032-bit%20optFPS.exe?raw=true)**, which is a NSIS installation file only used in Windows platform. 
+- Download **[WillowbendDICOM_Enhanced 32-bit Installer.exe](https://github.com/YangChuan80/WillowbendDICOM/blob/master/Enhanced/installer/Willowbend%20Enhanced%2032-bit%20optFPS.exe?raw=true)** file from **[here](https://github.com/YangChuan80/WillowbendDICOM/blob/master/Enhanced/installer/Willowbend%20Enhanced%2032-bit%20optFPS.exe?raw=true)**, which is a NSIS installation file only used in Windows platform. 
 - After downloading, you can install it directly. When finished, a folder with the same name have been made. Enter the folder WillowbendDICOM, run the **WillowbendDICOM.EXE** to go!
 - This option is for ordinary users, who are not required to possess any knowledge of Python programming language or to have Python interpreter configured on their computers.
 - Willowbend DICOM can currently be installed on Windows 7 or later platform only.
@@ -65,9 +65,9 @@ pyinstaller WillowbendDICOM.py -w
 ```
 
 ## Instructions
-- Click **Browse** button to choose the DICOM file. 
+- Click **Browse** button to choose the DICOM file(s). 
 - Load this chosen file. Don't forget to press **Load** button. When file successfully loaded, a information dialog will pop up to notice you. 
-- Click **Convert** button on the right to convert the currently loaded DICOM file to AVI file. During this session, you will be asked to specify the location you're going to output to. Next you are required to select the VIDEO COMPRESSION options, which the **"Full Frames (Uncompressed)"** is recommended. Click **OK**. You'll wait for about a second, and your AVI file is ready! Congratulations!
+- Click **Convert** button on the right to convert the currently loaded DICOM file to AVI file. During this session, you will be asked to specify the location you're going to output to. Click **OK**. You'll wait for about a second, and your AVI file is ready! Congratulations!
 - Optionally, you can customize the value of the **Clip Limit** if you're not satisfied with your converted AVI file with the default value of 3.0. The higher value means the more contrast effect in the video file you'll get. 
 
 ## License
